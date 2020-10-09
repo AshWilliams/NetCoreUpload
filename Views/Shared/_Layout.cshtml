@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropzone Múltiple subida de archivos con Bootstrap Demo</title>
+    <meta name="description" content="Subida de múltiples archivos con Dropzone, Bootstrap 4, NetCore 3.1 y jQuery Sortable." />
+    <meta name="author" content="Robert Rozas navarro">
+    <link rel="shortcut icon" href="https://www.jose-aguilar.com/blog/wp-content/themes/jaconsulting/favicon.ico" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="~/js/dropzone.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="https://www.github.com/">
+            <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" width="30" height="30" alt="Jose Aguilar">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="~/Home">Demo-Home v2<span class="sr-only">(current)</span></a>
+            </div>
+        </div>
+    </nav>
+        <div class="container">
+            
+                @RenderBody()
+            
+        </div>
+
+        <footer class="footer bg-dark">
+            <div class="container">
+                <span class="text-muted"><a href="https://www.github.com/ashwilliams">&copy; Robert Rozas</a></span>
+            </div>
+        </footer>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>
