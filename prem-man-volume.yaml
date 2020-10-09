@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: images-premium-storage
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: managed-premium #azurefile
+  resources:
+    requests:
+      storage: 5Gi

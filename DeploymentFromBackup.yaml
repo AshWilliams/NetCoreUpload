@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dropzone-demo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: netcore-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netcore-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netcore-demo
+  template:
+    metadata:
+      labels:
+        app: netcore-demo
+    spec:
+      containers:
+      - name: netcore-demo
+        image: ashwilliams/netcore-upload:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: GitHub
+          value: "https://github.com/AshWilliams/NetCoreUpload"
+        volumeMounts:
+        - name: pvc-restored-storage
+          mountPath: /app/wwwroot/images
+      volumes:
+      - name: pvc-restored-storage
+        azureDisk:
+          kind: Managed
+          diskName: pvcRestored 
+          diskURI: /subscriptions/12345/resourceGroups/MC_RG-AKS-BlueTeam_aks-demo-cluster_eastus2/providers/Microsoft.Compute/disks/pvcRestored
+        
