@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NetCoreUploadDemo.Models;
 
@@ -14,25 +15,31 @@ namespace NetCoreUploadDemo.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private static IConfiguration configuration;
+        private string repo;
+        public HomeController(ILogger<HomeController> logger, IConfiguration iconfiguration)
         {
             _logger = logger;
+            configuration = iconfiguration;
+            repo = configuration.GetSection("GitHub").Value;
         }
 
         public IActionResult Index()
         {
+            ViewData["GitHub"] = repo;
             return View();
         }
 
         public IActionResult Images(string file="")
         {
+            ViewData["GitHub"] = repo;
+
             if (file.Length > 0)
             {
-                System.IO.File.Delete(@"wwwroot\images\"+file);
+                System.IO.File.Delete(@"wwwroot/images/"+file);
             }
 
-            string[] fileEntries = Directory.GetFiles(@"wwwroot\images").Select(file => Path.GetFileName(file)).ToArray(); ;
+            string[] fileEntries = Directory.GetFiles(@"wwwroot/images").Select(file => Path.GetFileName(file)).ToArray(); ;
             return View(fileEntries);
         }
 
@@ -45,7 +52,7 @@ namespace NetCoreUploadDemo.Controllers
                 if (formFile.Length > 0)
                 {
                     var fileName = Path.GetFileName(formFile.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/images", fileName);
 
                     using (var stream = System.IO.File.Create(filePath))
                     {

@@ -19,8 +19,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="https://www.github.com/">
-            <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" width="30" height="30" alt="Jose Aguilar">
+        <a class="navbar-brand" href="@ViewBag.GitHub">
+            <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" width="30" height="30" alt="Robert Rozas Navarro">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
 
         <footer class="footer bg-dark">
             <div class="container">
-                <span class="text-muted"><a href="https://www.github.com/ashwilliams">&copy; Robert Rozas</a></span>
+                <span class="text-muted"><a href="@ViewBag.GitHub">&copy; Robert Rozas</a></span>
             </div>
         </footer>
         @RenderSection("Scripts", required: false)
