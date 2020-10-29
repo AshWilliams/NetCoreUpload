@@ -31,12 +31,11 @@ spec:
         - containerPort: 80
         env:
         - name: GitHub
-          value: "https://github.com/AshWilliams/NetCoreUpload"
-      
-      #   volumeMounts:
-      #   - name: images-premium-storage
-      #     mountPath: /app/wwwroot/images
-      # volumes:
-      # - name: images-premium-storage
-      #   persistentVolumeClaim:
-      #     claimName: images-premium-storage
+          value: "https://github.com/AshWilliams/NetCoreUpload"      
+        volumeMounts:
+        - name: images-premium-storage
+          mountPath: /app/wwwroot/images
+      volumes:
+      - name: images-premium-storage
+        persistentVolumeClaim:
+          claimName: images-premium-storage
