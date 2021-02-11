@@ -17,16 +17,22 @@ namespace NetCoreUploadDemo.Controllers
         private readonly ILogger<HomeController> _logger;
         private static IConfiguration configuration;
         private string repo;
+        private string ambiente;
+        private string correo;
         public HomeController(ILogger<HomeController> logger, IConfiguration iconfiguration)
         {
             _logger = logger;
             configuration = iconfiguration;
             repo = configuration.GetSection("GitHub").Value;
+            ambiente = configuration.GetSection("Ambiente").Value;
+            correo = configuration.GetSection("correo").Value;
         }
 
         public IActionResult Index()
         {
             ViewData["GitHub"] = repo;
+            ViewData["Ambiente"] = ambiente;
+            ViewData["correo"] = correo;
             return View();
         }
 

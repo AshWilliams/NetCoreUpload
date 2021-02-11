@@ -27,6 +27,13 @@ spec:
       containers:
       - name: netcore-demo
         image: ashwilliams/netcore-upload:latest
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1G
+          requests:
+            cpu: "0.5"
+            memory: 750Mi
         ports:
         - containerPort: 80
         env:

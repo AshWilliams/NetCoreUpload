@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-demows-upload
+  labels:
+    name: pod-demows-upload
+spec:
+  containers:
+  - name: pod-demows-upload
+    image: ashwilliams/netcore-upload:latest
+    ports:
+    - containerPort: 80

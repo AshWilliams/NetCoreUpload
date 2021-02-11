@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-netcore-demo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: netcore-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netcore-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: netcore-demo
+  template:
+    metadata:
+      labels:
+        app: netcore-demo
+    spec:
+      containers:
+      - name: netcore-demo
+        image: ashwilliams/netcore-upload:v2
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1G
+          requests:
+            cpu: "0.5"
+            memory: 750Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: GitHub
+          value: "https://github.com/AshWilliams/NetCoreUpload"
+        - name: Ambiente
+          value: "Kubernetes"
+          # valueFrom:
+          #   configMapKeyRef:
+          #     name: my-config           # The ConfigMap this value comes from.
+          #     key: Ambiente
+        - name: correo
+          value: "rorozasn@microsoft.com"
+          # valueFrom:
+          #   configMapKeyRef:
+          #     name: my-config           # The ConfigMap this value comes from.
+          #     key: correo
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: aspnetapp
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: aspnetapp
+          servicePort: 80

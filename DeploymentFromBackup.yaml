@@ -40,5 +40,5 @@ spec:
         azureDisk:
           kind: Managed
           diskName: pvcRestored 
-          diskURI: /subscriptions/12345/resourceGroups/MC_RG-AKS-BlueTeam_aks-demo-cluster_eastus2/providers/Microsoft.Compute/disks/pvcRestored
+          diskURI: /subscriptions/658a53e3-ea72-4675-b77a-0380f3b476e6/resourceGroups/MC_RG-AKS-BlueTeam_aks-cluster-demos_eastus2/providers/Microsoft.Compute/disks/pvcRestored
         
