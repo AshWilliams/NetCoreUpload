@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: netcore-demo
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: netcore-demo
@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: netcore-demo
-        image: ashwilliams/netcore-upload:v2
+        image: ashwilliams/netcore-upload:v6
         resources:
           limits:
             cpu: "1"
@@ -40,7 +40,7 @@ spec:
         - name: GitHub
           value: "https://github.com/AshWilliams/NetCoreUpload"
         - name: Ambiente
-          value: "Kubernetes"
+          value: "AKS"
           # valueFrom:
           #   configMapKeyRef:
           #     name: my-config           # The ConfigMap this value comes from.
@@ -51,19 +51,19 @@ spec:
           #   configMapKeyRef:
           #     name: my-config           # The ConfigMap this value comes from.
           #     key: correo
----
+#---
 
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: aspnetapp
-  annotations:
-    kubernetes.io/ingress.class: azure/application-gateway
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        backend:
-          serviceName: aspnetapp
-          servicePort: 80
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: aspnetapp
+#  annotations:
+#    kubernetes.io/ingress.class: azure/application-gateway
+#spec:
+#  rules:
+#  - http:
+#      paths:
+#      - path: /
+#        backend:
+#          serviceName: aspnetapp
+#          servicePort: 80

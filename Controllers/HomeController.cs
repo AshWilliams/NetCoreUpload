@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -33,6 +36,13 @@ namespace NetCoreUploadDemo.Controllers
             ViewData["GitHub"] = repo;
             ViewData["Ambiente"] = ambiente;
             ViewData["correo"] = correo;
+            //var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
+            //string LocalIPAddr = feature?.LocalIpAddress?.ToString();
+            var HostName = Dns.GetHostName(); // get container id
+            var LocalIP = Dns.GetHostEntry(HostName).AddressList.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+            var currDate = DateTime.Now.ToString("dd/MM/yyyy");
+            ViewData["IpLocal"] = LocalIP;
+            ViewData["currDate"] = currDate;
             return View();
         }
 

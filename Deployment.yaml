@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: netcore-demo
-        image: ashwilliams/netcore-upload:latest
+        image: ashwilliams/netcore-upload:v6
         resources:
           limits:
             cpu: "1"
@@ -39,10 +39,10 @@ spec:
         env:
         - name: GitHub
           value: "https://github.com/AshWilliams/NetCoreUpload"      
-        volumeMounts:
-        - name: images-premium-storage
-          mountPath: /app/wwwroot/images
-      volumes:
-      - name: images-premium-storage
-        persistentVolumeClaim:
-          claimName: images-premium-storage
+      #   volumeMounts:
+      #   - name: images-premium-storage
+      #     mountPath: /app/wwwroot/images
+      # volumes:
+      # - name: images-premium-storage
+      #   persistentVolumeClaim:
+      #     claimName: images-premium-storage
