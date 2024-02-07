@@ -39,6 +39,8 @@ spec:
         env:
         - name: GitHub
           value: "https://github.com/AshWilliams/NetCoreUpload"      
+        - name: Logo
+          value: "https://preview.redd.it/erdjqzlmlv111.png?auto=webp&s=1dfcc14e586e2aaa0ee7fb9a1bb9da6679ec892b" 
       #   volumeMounts:
       #   - name: images-premium-storage
       #     mountPath: /app/wwwroot/images

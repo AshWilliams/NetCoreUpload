@@ -22,6 +22,7 @@ namespace NetCoreUploadDemo.Controllers
         private string repo;
         private string ambiente;
         private string correo;
+        private string logo;
         public HomeController(ILogger<HomeController> logger, IConfiguration iconfiguration)
         {
             _logger = logger;
@@ -29,6 +30,7 @@ namespace NetCoreUploadDemo.Controllers
             repo = configuration.GetSection("GitHub").Value;
             ambiente = configuration.GetSection("Ambiente").Value;
             correo = configuration.GetSection("correo").Value;
+            logo = configuration.GetSection("Logo").Value;
         }
 
         public IActionResult Index()
@@ -36,6 +38,7 @@ namespace NetCoreUploadDemo.Controllers
             ViewData["GitHub"] = repo;
             ViewData["Ambiente"] = ambiente;
             ViewData["correo"] = correo;
+            ViewData["logo"] = logo;
             //var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
             //string LocalIPAddr = feature?.LocalIpAddress?.ToString();
             var HostName = Dns.GetHostName(); // get container id
@@ -49,6 +52,7 @@ namespace NetCoreUploadDemo.Controllers
         public IActionResult Images(string file="")
         {
             ViewData["GitHub"] = repo;
+            ViewData["logo"] = logo;
 
             if (file.Length > 0)
             {

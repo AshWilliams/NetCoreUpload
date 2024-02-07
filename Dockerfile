@@ -17,7 +17,8 @@ RUN dotnet publish -o /app/ -c Release
 FROM base AS final
 ENV GitHub=github.com
 ENV Ambiente=docker
-ENV correo=docker@docker.com
+ENV correo=robert.rozas.n@outlook.com
+ENV Logo=https://preview.redd.it/erdjqzlmlv111.png?auto=webp&s=1dfcc14e586e2aaa0ee7fb9a1bb9da6679ec892b
 
 WORKDIR /app
 COPY --from=publish /app .
